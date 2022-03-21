@@ -1,0 +1,23 @@
+﻿@model StudentManagment.Models.Student
+
+<form method="post" asp-action="Update">
+    <input asp-for="Id" hidden />
+  <div class="form-group">
+    <label asp-for="StudentName"></label>
+    <input asp-for="StudentName" class="form-control">
+    <span asp-validation-for="StudentName" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="StudentNumber"></label>
+    <input asp-for="StudentNumber" class="form-control">
+    <span asp-validation-for="StudentNumber" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="StudentCourses"></label>
+    <input asp-for="StudentCourses" class="form-control">
+  </div>
+  <div class="row justify-content-center">
+    <button type="submit" class="btn btn-danger col-5 m-1">Confirm</button>
+    <a asp-controller="Student" asp-action="Index" class="btn btn-primary col-5 m-1">Back</a>
+</div>
+</form>
