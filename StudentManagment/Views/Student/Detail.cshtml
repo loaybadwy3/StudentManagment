@@ -1,0 +1,10 @@
+﻿@model StudentManagment.ViewModels.StudentCourseViewModel
+
+<form class="form-group" method="post" asp-action="detail">
+    <select class="form-select" asp-for="CourseId" asp-items="@(new SelectList(Model.Courses,"Id","CourseName"))">
+
+    </select>
+</form>
+
+
+

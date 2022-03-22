@@ -14,6 +14,6 @@ namespace StudentManagment.Models
         [Display(Name = "Course ID")]
         public int CourseNumber { get; set; }
 
-        public List<Student_Course> Student_Courses { get; set; }
+        public ICollection<Student> Students { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudentManagment.Data;
 using StudentManagment.Models;
+using StudentManagment.ViewModels;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,6 @@ namespace StudentManagment.Controllers
             IEnumerable<Student> objList = _db.Students;
             return View(objList);
         }
-
         public IActionResult Details(int id)
         {
             var obj = _db.Students.Find(id);
@@ -29,7 +29,29 @@ namespace StudentManagment.Controllers
                 return NotFound();
             }
             return View(obj);
-        
+
+        }
+
+        //public IActionResult Detail(int? id)
+        //{
+        //    var obj = _db.Students.Find(id);
+        //    StudentCourseViewModel scvm = new StudentCourseViewModel();
+        //    scvm.student = _db.Students.Find(id);
+        //    //scvm.course = _db.Courses.Find(id);
+
+        //    scvm.students = _db.Students;
+        //    scvm.courses = _db.Courses;
+        //    return View(scvm);
+
+        //}
+
+        public IActionResult Detail()
+        {
+            StudentCourseViewModel vm = new StudentCourseViewModel();
+
+            vm.Courses = _db.Courses.ToList();
+
+            return View(vm);
         }
 
         // GET-Add
@@ -39,16 +61,32 @@ namespace StudentManagment.Controllers
         }
 
         // POST-Add
+        //[HttpPost]
+        //public IActionResult Add(Student obj)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _db.Students.Add(obj);
+        //        _db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(obj);
+        //}
+
         [HttpPost]
-        public IActionResult Add(Student obj)
+        public IActionResult Add(StudentCourseViewModel VM)
         {
+            Student student = new Student();
+            student.StudentName = VM.StudentName;
+            student.StudentNumber = VM.StudentNumber;
+            student.Courses = VM.Courses.ToList();
             if (ModelState.IsValid)
             {
-                _db.Students.Add(obj);
+                _db.Students.Add(student);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(obj);
+            return View(student);
         }
         //GET-Delete
         public IActionResult DeleteGet(int? id)
