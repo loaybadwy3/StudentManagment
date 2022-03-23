@@ -21,5 +21,6 @@ namespace StudentManagment.Models
         public ICollection<Course> Courses { get; set; }
 
 
+
     }
 }

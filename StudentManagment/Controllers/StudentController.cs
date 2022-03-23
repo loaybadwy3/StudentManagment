@@ -57,7 +57,10 @@ namespace StudentManagment.Controllers
         // GET-Add
         public IActionResult Add()
         {
-            return View();
+
+            StudentCourseViewModel vm = new StudentCourseViewModel();
+            vm.Courses = _db.Courses.ToList();
+            return View(vm);
         }
 
         // POST-Add
@@ -74,12 +77,13 @@ namespace StudentManagment.Controllers
         //}
 
         [HttpPost]
-        public IActionResult Add(StudentCourseViewModel VM)
+        public IActionResult AddPost(SaveStudentCourses VM)
         {
+            
             Student student = new Student();
             student.StudentName = VM.StudentName;
             student.StudentNumber = VM.StudentNumber;
-            student.Courses = VM.Courses.ToList();
+           // student.Courses = VM.Courses;
             if (ModelState.IsValid)
             {
                 _db.Students.Add(student);
@@ -88,6 +92,13 @@ namespace StudentManagment.Controllers
             }
             return View(student);
         }
+
+        //[HttpPost]
+        //public string Add(string StudentName, int StudentNumber, List<int> Courses)
+        //{
+        //    return "ss";
+        //}
+
         //GET-Delete
         public IActionResult DeleteGet(int? id)
         {

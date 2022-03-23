@@ -27,6 +27,8 @@ namespace StudentManagment.Data
         public DbSet<Course> Courses { get; set; }
 
         //public DbSet<Student_Course> Student_Courses { get; set;}
-        //public DbSet<StudentCourseViewModel> StudentCourseViewModel { get; set; }
+        public DbSet<StudentCourseViewModel> StudentCourseViewModel { get; set; }
+        public DbSet<StudentCourseViewModel> SaveStudentCourses { get; set; }
+
     }
 }

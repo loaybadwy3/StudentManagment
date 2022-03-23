@@ -1,4 +1,4 @@
-﻿@model StudentManagment.ViewModels.StudentCourseViewModel
+﻿@model StudentManagment.ViewModels.SaveStudentCourses
 
 <form method="post" asp-action="AddPost">
   <div class="form-group">
@@ -14,9 +14,9 @@
     @foreach ( var course in Model.Courses)
     {
         <div class="form-check">
-            <input name="Courses" class="form-check-input" type="checkbox" value="@course.Id" id="@course.Id">
-            <label class="form-check-label" for="@course.Id">
-                @course.CourseName
+            <input name="Courses" class="form-check-input" type="checkbox" value="@Model.Course.Id" id="@Model.Course.Id">
+            <label class="form-check-label" for="@Model.Course.Id">
+                @Model.Course.CourseName
             </label>
         </div>
     }

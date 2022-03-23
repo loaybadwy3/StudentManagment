@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StudentManagment.Models
@@ -15,5 +16,7 @@ namespace StudentManagment.Models
         public int CourseNumber { get; set; }
 
         public ICollection<Student> Students { get; set; }
+
+
     }
 }

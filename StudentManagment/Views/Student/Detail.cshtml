@@ -1,9 +1,15 @@
 ﻿@model StudentManagment.ViewModels.StudentCourseViewModel
 
 <form class="form-group" method="post" asp-action="detail">
-    <select class="form-select" asp-for="CourseId" asp-items="@(new SelectList(Model.Courses,"Id","CourseName"))">
-
-    </select>
+      @foreach ( var course in Model.Courses)
+    {
+        <div class="form-check">
+            <input asp-for="CourseName" class="form-check-input" type="checkbox" value="" id="@course.CourseName">
+            <label class="form-check-label" for="@course.CourseName">
+                @course.CourseName
+            </label>
+        </div>
+    }
 </form>
 
 
